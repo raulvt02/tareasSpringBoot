@@ -10,13 +10,13 @@
 
 ## 3) Arquitectura
 Explica brevemente cómo has organizado:
-- Controller:
-- Service:
-- Repository:
-- Entity:
+- Controller: com.example.ra3.controlador
+- Service: com.example.ra3.servicio
+- Repository: com.example.ra3.repositorio
+- Entity: com.example.ra3.entidad
 
 ## 4) Base de datos elegida (marca una)
-- [ ] H2
+- [x] H2
 - [ ] MySQL
 - [ ] PostgreSQL
 

@@ -1,21 +1,31 @@
 package com.example.ra3.servicio;
 
-import java.util.List;
-
+import com.example.ra3.entidad.Jugador;
+import com.example.ra3.repositorio.JugadorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.ra3.entidad.Jugador;
-import com.example.ra3.repositorio.JugadorRepositorio;
+import java.util.List;
 
 @Service
 public class JugadorServicio {
 
-	@Autowired
-	private JugadorRepositorio jugadorRepositorio;
+    @Autowired
+    private JugadorRepositorio jugadorRepository;
 
-	public List<Jugador> listarTodos() {
-		return jugadorRepositorio.findAll();
-	}
-	
+    public List<Jugador> findAll() {
+        return jugadorRepository.findAll();
+    }
+
+    public Jugador findById(Integer id) {
+        return jugadorRepository.findById(id).orElse(null);
+    }
+
+    public Jugador save(Jugador jugador) {
+        return jugadorRepository.save(jugador);
+    }
+
+    public void deleteById(Integer id) {
+        jugadorRepository.deleteById(id);
+    }
 }

@@ -48,4 +48,9 @@ public class JugadorControlador {
         jugadorServicio.deleteById(id);
         return "redirect:/jugadores";
     }
+    
+    @GetMapping("/")
+    public String rootRedirect() {
+        return "redirect:/jugadores";
+    }
 }

@@ -17,7 +17,7 @@ public class JugadorControlador {
 
     @GetMapping("/jugadores")
     public String listar(Model model) {
-        model.addAttribute("jugadores", jugadorServicio.findAll());
+        model.addAttribute("jugadores", jugadorServicio.obtenerJugadores());
         return "jugadores/lista";
     }
 
@@ -29,7 +29,7 @@ public class JugadorControlador {
 
     @GetMapping("/jugadores/editar/{id}")
     public String editar(@PathVariable Integer id, Model model) {
-        Jugador jugador = jugadorServicio.findById(id);
+        Jugador jugador = jugadorServicio.obtenerJugadorPorId(id);
         model.addAttribute("jugador", jugador);
         return "jugadores/formulario";
     }
@@ -39,16 +39,16 @@ public class JugadorControlador {
         if (result.hasErrors()) {
             return "jugadores/formulario";
         }
-        jugadorServicio.save(jugador);
+        jugadorServicio.agregarJugador(jugador);
         return "redirect:/jugadores";
     }
 
     @GetMapping("/jugadores/eliminar/{id}")
     public String eliminar(@PathVariable Integer id) {
-        jugadorServicio.deleteById(id);
+        jugadorServicio.eliminarJugador(id);
         return "redirect:/jugadores";
     }
-    
+
     @GetMapping("/")
     public String rootRedirect() {
         return "redirect:/jugadores";

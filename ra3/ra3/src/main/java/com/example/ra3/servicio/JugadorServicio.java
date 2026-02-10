@@ -11,21 +11,21 @@ import java.util.List;
 public class JugadorServicio {
 
     @Autowired
-    private JugadorRepositorio jugadorRepository;
+    private JugadorRepositorio repositorio;
 
-    public List<Jugador> findAll() {
-        return jugadorRepository.findAll();
+    public List<Jugador> obtenerJugadores() {
+        return repositorio.findAll();
     }
 
-    public Jugador findById(Integer id) {
-        return jugadorRepository.findById(id).orElse(null);
+    public Jugador obtenerJugadorPorId(Integer id) {
+        return repositorio.findById(id).orElse(null);
     }
 
-    public Jugador save(Jugador jugador) {
-        return jugadorRepository.save(jugador);
+    public Jugador agregarJugador(Jugador jugador) {
+        return repositorio.save(jugador);
     }
 
-    public void deleteById(Integer id) {
-        jugadorRepository.deleteById(id);
+    public void eliminarJugador(Integer id) {
+        repositorio.deleteById(id);
     }
 }

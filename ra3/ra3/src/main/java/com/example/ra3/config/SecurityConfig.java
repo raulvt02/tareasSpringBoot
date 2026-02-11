@@ -54,24 +54,28 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/jugadores").permitAll()
+                .requestMatchers("/", "/jugadores", "/jugadores/detalles/**").permitAll()
                 .requestMatchers(PathRequest.toH2Console()).hasRole("ADMIN")
-                .requestMatchers("/h2-console/**", "/h2/**").hasRole("ADMIN")
-                .requestMatchers("/jugadores/**").authenticated()
+                .requestMatchers("/h2/**").hasRole("ADMIN")  // H2 solo ADMIN
+                .requestMatchers("/jugadores/nuevo", "/jugadores/editar/**", "/jugadores/eliminar/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         );
 
         http.csrf(csrf -> csrf
                 .ignoringRequestMatchers(PathRequest.toH2Console())
-                .ignoringRequestMatchers("/h2-console/**", "/h2/**")
+                .ignoringRequestMatchers("/h2/**")
         );
 
         http.formLogin(form -> form
+                .loginPage("/login")
                 .defaultSuccessUrl("/jugadores", true)
                 .permitAll()
         );
 
-        http.logout(logout -> logout.permitAll());
+        http.logout(logout -> logout
+                .logoutSuccessUrl("/jugadores")
+                .permitAll()
+        );
 
         return http.build();
     }

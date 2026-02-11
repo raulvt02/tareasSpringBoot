@@ -15,6 +15,11 @@ public class JugadorControlador {
     @Autowired
     private JugadorServicio jugadorServicio;
 
+    @GetMapping("/")
+    public String rootRedirect() {
+        return "redirect:/jugadores";
+    }
+
     @GetMapping("/jugadores")
     public String listar(Model model) {
         model.addAttribute("jugadores", jugadorServicio.obtenerJugadores());
@@ -49,8 +54,19 @@ public class JugadorControlador {
         return "redirect:/jugadores";
     }
 
-    @GetMapping("/")
-    public String rootRedirect() {
-        return "redirect:/jugadores";
+    @GetMapping("/jugadores/detalles/{id}")
+    public String detalles(@PathVariable Integer id, Model model) {
+        Jugador jugador = jugadorServicio.obtenerJugadorPorId(id);
+        if (jugador == null) {
+            return "redirect:/jugadores";
+        }
+        model.addAttribute("jugador", jugador);
+        return "jugadores/detalles";
     }
+    
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
 }

@@ -4,9 +4,9 @@
 - Proyecto de gestión de jugadores de videojuegos. Permite listar jugadores, ver detalles de estadísticas, crear, editar y eliminar jugadores según rol. Seguridad con Spring Security: roles INVITADO, USUARIO y ADMIN.
 
 ## 2) Repositorio (fork) y gestión de versiones
-Repositorio base: https://github.com/profeInformatica101/tareasSpringBoot
-Enlace a MI fork: https://github.com/raulvt02/tareasSpringBoot
-Nº de commits realizados: 22
+- Repositorio base: https://github.com/profeInformatica101/tareasSpringBoot
+- Enlace a MI fork: https://github.com/raulvt02/tareasSpringBoot
+- Nº de commits realizados: 22
 
 ## 3) Arquitectura
 Explica brevemente cómo has organizado:

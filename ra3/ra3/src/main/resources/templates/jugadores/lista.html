@@ -44,7 +44,7 @@
                         </a>
                     </span>
 
-					<span sec:authorize="hasRole('USER') and !hasRole('ADMIN')">
+					<span sec:authorize="hasAnyRole('USER', 'ADMIN')">
 					    <a th:href="@{/jugadores/detalles/{id}(id=${jugador.id})}"
 					       class="btn btn-sm btn-info">
 					        Ver detalles

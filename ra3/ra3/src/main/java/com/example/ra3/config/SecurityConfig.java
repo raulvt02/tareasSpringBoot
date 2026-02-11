@@ -54,9 +54,10 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/jugadores", "/jugadores/detalles/**").permitAll()
+                .requestMatchers("/", "/jugadores").permitAll()
+                .requestMatchers("/jugadores/detalles/**").hasAnyRole("USER", "ADMIN")
                 .requestMatchers(PathRequest.toH2Console()).hasRole("ADMIN")
-                .requestMatchers("/h2/**").hasRole("ADMIN")  // H2 solo ADMIN
+                .requestMatchers("/h2/**").hasRole("ADMIN")
                 .requestMatchers("/jugadores/nuevo", "/jugadores/editar/**", "/jugadores/eliminar/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         );

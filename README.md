@@ -44,5 +44,3 @@ URL de acceso:
 - Página principal: http://localhost:9091/jugadores
 - Consola H2: http://localhost:9091/h2
 - Login: http://localhost:9091/login
-- Pruebas
-- Paginación

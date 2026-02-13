@@ -73,8 +73,9 @@ public class SecurityConfig {
                 .permitAll()
         );
 
-        http.logout(logout -> logout
-                .logoutSuccessUrl("/jugadores")
+        http.logout(logout -> logout       		
+        		.logoutSuccessUrl("/jugadores")
+        		
                 .permitAll()
         );
 
